@@ -7,7 +7,7 @@
 
 ## Description
 
-A Rubberducky HID Attack injects common lock screen keyboard shortcuts for Windows, Mac and Linux then proceeds to continuously inject these lock screen keyboard combos in addition to SHIFT HOME and BACKSPACE to delete anything typed into the password prompt.
+A Rubber Ducky HID Attack injects common lock screen keyboard shortcuts for Windows, Mac and Linux then proceeds to continuously inject these lock screen keyboard combos in addition to SHIFT HOME and BACKSPACE to delete anything typed into the password prompt.
 
 ## STATUS
 
